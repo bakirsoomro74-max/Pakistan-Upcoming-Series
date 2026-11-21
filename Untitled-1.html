@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082d24">
+  <title>Pakistan Cricket — Upcoming Series</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --green: #082d24;
+      --green-2: #123d32;
+      --lime: #d9ef76;
+      --paper: #f4f2e9;
+      --ink: #122c25;
+      --muted: #68766f;
+      --line: #dde3d8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    header {
+      height: 76px;
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(217, 239, 118, .55);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--lime);
+      font-size: 20px;
+    }
+
+    .brand strong {
+      font-family: "Manrope", sans-serif;
+      font-size: 15px;
+      letter-spacing: .08em;
+    }
+
+    .nav-link {
+      color: #edf3ee;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-link span {
+      color: var(--lime);
+      margin-left: 5px;
+    }
+
+    .hero {
+      background: var(--green);
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 54% 46%;
+      min-height: 470px;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 70px 60px 70px 0;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Manrope", sans-serif;
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 620px;
+      font-size: clamp(48px, 6vw, 74px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      margin-bottom: 22px;
+    }
+
+    .hero-copy>p:not(.eyebrow) {
+      max-width: 560px;
+      color: #cbd9d1;
+      font-size: 18px;
+      line-height: 1.65;
+      margin: 0 0 30px;
+    }
+
+    .primary {
+      align-self: flex-start;
+      background: var(--lime);
+      color: var(--green);
+      border-radius: 999px;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(217, 239, 118, .16);
+    }
+
+    .primary span {
+      margin-left: 12px;
+    }
+
+    .hero-image {
+      min-height: 470px;
+      background:
+        linear-gradient(90deg, var(--green) 0, rgba(8, 45, 36, .18) 20%, transparent 45%),
+        url("https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1200") center/cover;
+    }
+
+    main {
+      padding: 46px 0 80px;
+    }
+
+    .spotlight {
+      background: #e9eddf;
+      border: 1px solid #d7dfd3;
+      border-radius: 24px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .spotlight .eyebrow {
+      color: #4e7357;
+      margin-bottom: 8px;
+    }
+
+    .spotlight h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .spotlight p {
+      color: #5d6c64;
+      margin: 0;
+    }
+
+    .status {
+      flex: none;
+      border-radius: 999px;
+      background: white;
+      color: #31543e;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 10px 14px;
+    }
+
+    .schedule {
+      padding-top: 70px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-head .eyebrow {
+      color: #66805e;
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      font-size: 34px;
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+
+    .section-head .sub {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px;
+    }
+
+    .tab {
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      color: var(--ink);
+      cursor: pointer;
+      font: 700 14px "DM Sans", sans-serif;
+      padding: 10px 16px;
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--green);
+      color: white;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: transparent;
+      border-radius: 999px;
+      color: var(--ink);
+      cursor: pointer;
+      font: 700 14px "DM Sans", sans-serif;
+      padding: 9px 15px;
+    }
+
+    .filter[aria-pressed="true"] {
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+
+    .tour-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .tour-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #7e9d50;
+    }
+
+    .tour-title h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .fixtures {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .fixture {
+      background: white;
+      border: 1px solid #e3e7de;
+      border-radius: 18px;
+      padding: 22px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .fixture:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(8, 45, 36, .08);
+    }
+
+    .fixture[hidden] {
+      display: none;
+    }
+
+    .date {
+      color: #57744f;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin: 0 0 24px;
+    }
+
+    .fixture h3 {
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    .round {
+      color: #66805e;
+      font-weight: 800;
+      margin: 0 0 24px;
+    }
+
+    .fixture-meta {
+      border-top: 1px solid #e8eadf;
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .fixture-meta strong {
+      white-space: nowrap;
+    }
+
+    .empty {
+      display: none;
+      border: 1px dashed #bec8ba;
+      border-radius: 18px;
+      padding: 28px;
+      color: var(--muted);
+    }
+
+    .empty.visible {
+      display: block;
+    }
+
+    .result-panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 48px;
+    }
+
+    .result-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e9eddf;
+      color: #3d6649;
+      margin-bottom: 18px;
+    }
+
+    .result-panel h3 {
+      margin-bottom: 8px;
+    }
+
+    .result-panel p {
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .horizon {
+      margin-top: 64px;
+      background: var(--green-2);
+      color: white;
+      border-radius: 26px;
+      padding: 38px;
+    }
+
+    .horizon .eyebrow {
+      color: var(--lime);
+      margin-bottom: 8px;
+    }
+
+    .horizon h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .horizon>p {
+      color: #ccdacf;
+      margin: 0 0 26px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .plan {
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .plan .date {
+      color: var(--lime);
+      margin-bottom: 10px;
+    }
+
+    .plan h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .plan p {
+      color: #c8d8cd;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    footer {
+      border-top: 1px solid #dce1d5;
+      background: #efede4;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #31543e;
+      text-underline-offset: 4px;
+    }
+
+    :focus-visible {
+      outline: 3px solid #94b33c;
+      outline-offset: 3px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 58px 0;
+      }
+
+      .hero-image {
+        min-height: 330px;
+        background-position: center 35%;
+      }
+
+      .fixtures {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plans {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      header {
+        height: 68px;
+      }
+
+      .nav-link {
+        font-size: 0;
+      }
+
+      .nav-link span {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero-copy>p:not(.eyebrow) {
+        font-size: 16px;
+      }
+
+      .hero-image {
+        min-height: 280px;
+      }
+
+      main {
+        padding-top: 28px;
+      }
+
+      .spotlight {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .fixtures {
+        grid-template-columns: 1fr;
+      }
+
+      .horizon {
+        padding: 24px 20px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Pakistan Cricket, back to top">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <strong>PAK / CRICKET</strong>
+      </a>
+      <a class="nav-link" href="#fixtures">Fixtures &amp; Results <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">The road ahead · 2026 / 27</p>
+          <h1>Every match.<br>Every moment.</h1>
+          <p>Follow Pakistan’s confirmed fixtures, from the current Test window to the five-match ODI tour of England.
+          </p>
+          <a class="primary" href="#fixtures">Explore fixtures <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-image" role="img" aria-label="Cricket player on the field"></div>
+      </div>
+    </section>
+
+    <div class="shell">
+      <aside class="spotlight" aria-labelledby="spotlight-title" style="margin-top:46px">
+        <div>
+          <p class="eyebrow">November Test window</p>
+          <h2 id="spotlight-title">Pakistan vs Sri Lanka</h2>
+          <p>2nd Test · 17–21 November 2026 · Rawalpindi</p>
+        </div>
+        <span class="status">Scheduled dates · no live score</span>
+      </aside>
+
+      <section class="schedule" id="fixtures" aria-labelledby="fixtures-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">The schedule</p>
+            <h2 id="fixtures-title">Fixtures &amp; results</h2>
+            <p class="sub">Confirmed dates shown in Pakistan Standard Time (PKT).</p>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Schedule view">
+            <button class="tab" id="upcoming-tab" role="tab" aria-selected="true"
+              aria-controls="upcoming-panel">Upcoming</button>
+            <button class="tab" id="results-tab" role="tab" aria-selected="false" aria-controls="results-panel"
+              tabindex="-1">Results</button>
+          </div>
+        </div>
+
+        <div id="upcoming-panel" role="tabpanel" aria-labelledby="upcoming-tab">
+          <div class="filters" role="group" aria-label="Filter by match format">
+            <button class="filter" type="button" aria-pressed="true" data-filter="all">All formats</button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="odi">ODI</button>
+            <button class="filter" type="button" aria-pressed="false" data-filter="test">Test</button>
+          </div>
+          <div class="tour-title"><span class="tour-dot" aria-hidden="true"></span>
+            <h3>England vs Pakistan · ODI series</h3>
+          </div>
+          <div class="fixtures" id="fixture-list">
+            <article class="fixture" data-format="odi">
+              <p class="date">15 MAY 2027</p>
+              <h3>England vs Pakistan</h3>
+              <p class="round">1st ODI</p>
+              <div class="fixture-meta"><span>Southampton</span><strong>3:00 pm PKT</strong></div>
+            </article>
+            <article class="fixture" data-format="odi">
+              <p class="date">19 MAY 2027</p>
+              <h3>England vs Pakistan</h3>
+              <p class="round">2nd ODI</p>
+              <div class="fixture-meta"><span>Manchester</span><strong>5:00 pm PKT</strong></div>
+            </article>
+            <article class="fixture" data-format="odi">
+              <p class="date">21 MAY 2027</p>
+              <h3>England vs Pakistan</h3>
+              <p class="round">3rd ODI</p>
+              <div class="fixture-meta"><span>Leeds</span><strong>3:00 pm PKT</strong></div>
+            </article>
+            <article class="fixture" data-format="odi">
+              <p class="date">23 MAY 2027</p>
+              <h3>England vs Pakistan</h3>
+              <p class="round">4th ODI</p>
+              <div class="fixture-meta"><span>Chester-le-Street</span><strong>3:00 pm PKT</strong></div>
+            </article>
+            <article class="fixture" data-format="odi">
+              <p class="date">26 MAY 2027</p>
+              <h3>England vs Pakistan</h3>
+              <p class="round">5th ODI</p>
+              <div class="fixture-meta"><span>Cardiff</span><strong>5:00 pm PKT</strong></div>
+            </article>
+          </div>
+          <div class="empty" id="filter-empty">No confirmed upcoming Test fixtures with exact dates are listed yet.
+          </div>
+        </div>
+
+        <div id="results-panel" role="tabpanel" aria-labelledby="results-tab" hidden>
+          <div class="result-panel">
+            <div class="result-icon" aria-hidden="true">✦</div>
+            <h3>No verified results to show</h3>
+            <p>Final scores were not available in the schedule sources used for this page. Check official match coverage
+              for the latest results.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="horizon" aria-labelledby="horizon-title">
+        <p class="eyebrow">On the horizon</p>
+        <h2 id="horizon-title">What’s being planned</h2>
+        <p>Reported plans, not confirmed match-by-match fixtures. Dates and participation may change.</p>
+        <div class="plans">
+          <article class="plan">
+            <p class="date">JAN–FEB 2027</p>
+            <h3>Ireland &amp; possible tri-series</h3>
+            <p>T20Is and other matches have been reported; exact fixtures are unconfirmed.</p>
+          </article>
+          <article class="plan">
+            <p class="date">FEB–MAR 2027</p>
+            <h3>New Zealand at home</h3>
+            <p>Two Tests are planned; match dates have not been confirmed.</p>
+          </article>
+          <article class="plan">
+            <p class="date">OCT–NOV 2027</p>
+            <h3>Men’s Cricket World Cup</h3>
+            <p>The tournament is scheduled for 4 October–21 November; Pakistan’s fixtures are not yet listed.</p>
+          </article>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>Schedule information checked 19 November 2026. Fixtures may change.</span>
+      <div class="footer-links">
+        <a href="https://www.pcb.com.pk/press-release-detail/pakistan-to-tour-england-for-five-odis-in-2027-.html"
+          target="_blank" rel="noopener noreferrer">PCB ODI announcement ↗</a>
+        <a href="https://apnews.com/article/02703e553b69b98dbc5f5bd9a00e60abb" target="_blank"
+          rel="noopener noreferrer">Sri Lanka Test report ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    const panels = [document.getElementById("upcoming-panel"), document.getElementById("results-panel")];
+    function selectTab(index) {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute("aria-selected", String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+        panels[i].hidden = i !== index;
+      });
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectTab(index));
+      tab.addEventListener("keydown", event => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const next = (index + (event.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+        selectTab(next);
+        tabs[next].focus();
+      });
+    });
+    document.querySelectorAll(".filter").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        let visible = 0;
+        document.querySelectorAll("#fixture-list [data-format]").forEach(card => {
+          card.hidden = button.dataset.filter !== "all" && card.dataset.format !== button.dataset.filter;
+          if (!card.hidden) visible++;
+        });
+        document.getElementById("filter-empty").classList.toggle("visible", visible === 0);
+      });
+    });
+  </script>
+</body>
+
+</html>
